@@ -12,9 +12,11 @@ namespace Aeroport
 {
     public partial class AddPassenger : Form
     {
-        public AddPassenger()
+        private Aeroport mainForm;
+        public AddPassenger(Aeroport mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -36,6 +38,7 @@ namespace Aeroport
             passenger.Age = (int)fieldAge.Value;
             Logic.AddEntity(passenger);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

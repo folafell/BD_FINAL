@@ -13,12 +13,14 @@ namespace Aeroport
 {
     public partial class AddStewardess : Form
     {
-        public AddStewardess()
+        private Aeroport mainForm;
+        public AddStewardess(Aeroport mainForm)
         {
             InitializeComponent();
             var employeesNotStewardesses = Logic.GetEmployeesNotInRole();
             fieldStewardessEmployeeId.DataSource = employeesNotStewardesses;
             fieldStewardessEmployeeId.DisplayMember = "EmployeeID";
+            this.mainForm = mainForm;
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -47,6 +49,7 @@ namespace Aeroport
             stewardess.ForeignLanguage = languagesString;
             Logic.AddEntity(stewardess);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

@@ -12,8 +12,9 @@ namespace Aeroport
 {
     public partial class AddBrigade : Form
     {
+        private Aeroport mainForm;
         Dictionary<int, string> brigadeBossDict = new Dictionary<int, string>();
-        public AddBrigade()
+        public AddBrigade(Aeroport mainForm)
         {
             InitializeComponent();
             using (var context = new AeroportContext())
@@ -32,6 +33,8 @@ namespace Aeroport
                 fieldBrigadeAirplane.DisplayMember = "ID";
                 fieldBrigadeAirplane.ValueMember = "AirplaneID";
             }
+
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -43,18 +46,16 @@ namespace Aeroport
                 return;
             }
             Brigade brigade = new Brigade();
-            // Получите выбранное значение из ComboBox
             string selectedBrigadeBoss = fieldBrigadeBoss.SelectedItem.ToString();
 
-            // Получите ID типа самолета из словаря
             int BrigadeBossID = brigadeBossDict.FirstOrDefault(x => x.Value == selectedBrigadeBoss).Key;
 
-            // Присвойте ID типа самолета полю ToAirplaneType
             brigade.BrigadeBossId = BrigadeBossID + 1;
 
             brigade.BrigadeAirplaneId = (int)fieldBrigadeAirplane.SelectedValue;
             Logic.AddEntity(brigade);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

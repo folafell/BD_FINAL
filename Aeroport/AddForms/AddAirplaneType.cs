@@ -12,9 +12,11 @@ namespace Aeroport
 {
     public partial class AddAirplaneType : Form
     {
-        public AddAirplaneType()
+        private Aeroport mainForm;
+        public AddAirplaneType(Aeroport mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -23,6 +25,7 @@ namespace Aeroport
             airplaneType.AirplaneTypeName = fieldAirplaneTypeName.Text;
             Logic.AddEntity(airplaneType);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

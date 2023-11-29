@@ -16,6 +16,18 @@ namespace Aeroport
                 context.SaveChanges();
             }
         }
+        public static void DeleteEntity<T>(int id) where T : class
+        {
+            using (var context = new AeroportContext())
+            {
+                var entity = context.Set<T>().Find(id);
+                if (entity != null)
+                {
+                    context.Set<T>().Remove(entity);
+                    context.SaveChanges();
+                }
+            }
+        }
 
         public static List<Employee> GetEmployeesNotInRole()
         {
@@ -33,6 +45,8 @@ namespace Aeroport
                 return employeesNotInRole;
             }
         }
+
+
 
     }
 }

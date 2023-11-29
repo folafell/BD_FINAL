@@ -12,7 +12,8 @@ namespace Aeroport
 {
     public partial class AddEmployee : Form
     {
-        public AddEmployee()
+        private Aeroport mainForm;
+        public AddEmployee(Aeroport mainForm)
         {
             InitializeComponent();
             using (var context = new AeroportContext())
@@ -23,6 +24,8 @@ namespace Aeroport
                 fieldEmployeeBrigadeId.DisplayMember = "ID";
                 fieldEmployeeBrigadeId.ValueMember = "BrigadeID";
             }
+
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -48,6 +51,7 @@ namespace Aeroport
             employee.Salary = (int)fieldSalary.Value;
             Logic.AddEntity(employee);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

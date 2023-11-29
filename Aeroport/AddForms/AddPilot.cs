@@ -12,12 +12,14 @@ namespace Aeroport
 {
     public partial class AddPilot : Form
     {
-        public AddPilot()
+        private Aeroport mainForm;
+        public AddPilot(Aeroport mainForm)
         {
             InitializeComponent();
             var employeesNotPilots = Logic.GetEmployeesNotInRole();
             fieldPilotEmployeeId.DataSource = employeesNotPilots;
             fieldPilotEmployeeId.DisplayMember = "EmployeeID";
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Aeroport
             pilot.Physical = (int)physical.Value;
             Logic.AddEntity(pilot);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

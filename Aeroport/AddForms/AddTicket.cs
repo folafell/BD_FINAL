@@ -12,7 +12,8 @@ namespace Aeroport
 {
     public partial class AddTicket : Form
     {
-        public AddTicket()
+        private Aeroport mainForm;
+        public AddTicket(Aeroport mainForm)
         {
             InitializeComponent();
             using (var context = new AeroportContext())
@@ -30,6 +31,8 @@ namespace Aeroport
                 fieldTicketFlightId.ValueMember = "FlightID";
 
             }
+
+            this.mainForm = mainForm;
         }
 
 
@@ -64,6 +67,7 @@ namespace Aeroport
             ticket.TimeOf = time;
             Logic.AddEntity(ticket);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

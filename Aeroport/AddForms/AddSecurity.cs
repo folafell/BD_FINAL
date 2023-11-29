@@ -12,12 +12,14 @@ namespace Aeroport
 {
     public partial class AddSecurity : Form
     {
-        public AddSecurity()
+        private Aeroport mainForm;
+        public AddSecurity(Aeroport mainForm)
         {
             InitializeComponent();
             var employeesNotSecurities = Logic.GetEmployeesNotInRole();
             fieldSecurityEmployeeId.DataSource = employeesNotSecurities;
             fieldSecurityEmployeeId.DisplayMember = "EmployeeID";
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Aeroport
             security.Education = fieldEducation.Text;
             Logic.AddEntity(security);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

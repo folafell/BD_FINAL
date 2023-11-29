@@ -12,9 +12,11 @@ namespace Aeroport
 {
     public partial class AddBoss : Form
     {
-        public AddBoss()
+        private Aeroport mainForm;
+        public AddBoss(Aeroport mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Aeroport
             boss.Salary = (int)fieldSalary.Value;
             Logic.AddEntity(boss);
             this.Close();
+            mainForm.Show();
         }
     }
 }

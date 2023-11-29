@@ -12,12 +12,14 @@ namespace Aeroport
 {
     public partial class AddTechnician : Form
     {
-        public AddTechnician()
+        private Aeroport mainForm;
+        public AddTechnician(Aeroport mainForm)
         {
             InitializeComponent();
             var employeesNotTechnicians = Logic.GetEmployeesNotInRole();
             fieldTechnicianEmployeeId.DataSource = employeesNotTechnicians;
             fieldTechnicianEmployeeId.DisplayMember = "EmployeeID";
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Aeroport
             technician.Education = fieldEducation.Text;
             Logic.AddEntity(technician);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

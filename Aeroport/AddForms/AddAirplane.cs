@@ -13,9 +13,10 @@ namespace Aeroport
 {
     public partial class AddAirplane : Form
     {
+        private Aeroport mainForm;
         Dictionary<int, string> airplaneTypesDict = new Dictionary<int, string>();
 
-        public AddAirplane()
+        public AddAirplane(Aeroport mainForm)
         {
             InitializeComponent();
             using (var context = new AeroportContext())
@@ -29,6 +30,8 @@ namespace Aeroport
                 fieldToAirplaneType.DisplayMember = "AirplaneTypeName";
                 fieldToAirplaneType.ValueMember = "AirplaneTypeId";
             }
+
+            this.mainForm = mainForm;
         }
 
         private void AddAirplane_Load(object sender, EventArgs e)
@@ -62,6 +65,7 @@ namespace Aeroport
             airplane.CountOfFlights = (int)fieldCountOfFlights.Value;
             Logic.AddEntity(airplane);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

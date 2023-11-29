@@ -12,12 +12,14 @@ namespace Aeroport
 {
     public partial class AddDispatcher : Form
     {
-        public AddDispatcher()
+        private Aeroport mainForm;
+        public AddDispatcher(Aeroport mainForm)
         {
             InitializeComponent();
             var employeesNotDispatchers = Logic.GetEmployeesNotInRole();
             fieldDispatcherEmployeeId.DataSource = employeesNotDispatchers;
             fieldDispatcherEmployeeId.DisplayMember = "EmployeeID";
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace Aeroport
             dispatcher.Education = fieldEducation.Text;
             Logic.AddEntity(dispatcher);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

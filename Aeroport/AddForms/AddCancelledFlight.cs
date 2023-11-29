@@ -12,7 +12,8 @@ namespace Aeroport
 {
     public partial class AddCancelledFlight : Form
     {
-        public AddCancelledFlight()
+        private Aeroport mainForm;
+        public AddCancelledFlight(Aeroport mainForm)
         {
             InitializeComponent();
             using (var context = new AeroportContext())
@@ -23,6 +24,8 @@ namespace Aeroport
                 fieldFlightID.DisplayMember = "ID";
                 fieldFlightID.ValueMember = "FlightID";
             }
+
+            this.mainForm = mainForm;   
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace Aeroport
             canceledFlight.Reason = fieldReason.Text;
             Logic.AddEntity(canceledFlight);
             this.Close();
-
+            mainForm.RefreshData();
         }
     }
 }

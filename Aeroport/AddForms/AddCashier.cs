@@ -13,12 +13,14 @@ namespace Aeroport
 {
     public partial class AddCashier : Form
     {
-        public AddCashier()
+        private Aeroport mainForm;
+        public AddCashier(Aeroport mainForm)
         {
             InitializeComponent();
             var employeesNotCashiers = Logic.GetEmployeesNotInRole();
             fieldCashierEmployeeId.DataSource = employeesNotCashiers;
             fieldCashierEmployeeId.DisplayMember = "EmployeeID";
+            this.mainForm = mainForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace Aeroport
             cashier.AccountantEducation = fieldAccountantEducation.Text;
             Logic.AddEntity(cashier);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }

@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
+            btnDelete = new Button();
             linkAirplaneTypes = new LinkLabel();
             btnAdd = new Button();
             comboBox = new ComboBox();
@@ -51,38 +52,44 @@
             linkBosses = new LinkLabel();
             linkAirplanes = new LinkLabel();
             linkAdministrators = new LinkLabel();
+            labelTableName = new Label();
+            groupBox2 = new GroupBox();
+            btnSearch = new Button();
+            fieldSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(190, 3);
+            dataGridView1.Location = new Point(190, 41);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1026, 439);
+            dataGridView1.Size = new Size(1026, 482);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellBeginEdit += dataGridView1_CellBeginEdit;
             dataGridView1.DataBindingComplete += dataGridView1_DataBindingComplete;
@@ -92,14 +99,17 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.3404427F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84.65955F));
-            tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Controls.Add(dataGridView1, 1, 0);
+            tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
+            tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
+            tableLayoutPanel1.Controls.Add(labelTableName, 1, 0);
+            tableLayoutPanel1.Controls.Add(groupBox2, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 76.28866F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 23.71134F));
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 89.37729F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.62271F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
@@ -113,6 +123,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(linkAirplaneTypes);
             groupBox1.Controls.Add(btnAdd);
             groupBox1.Controls.Add(comboBox);
@@ -132,11 +143,24 @@
             groupBox1.Controls.Add(linkAirplanes);
             groupBox1.Controls.Add(linkAdministrators);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 3);
+            groupBox1.Location = new Point(3, 41);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(181, 439);
+            groupBox1.Size = new Size(181, 482);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(192, 0, 192);
+            btnDelete.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelete.ForeColor = SystemColors.ButtonFace;
+            btnDelete.Location = new Point(6, 441);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(175, 39);
+            btnDelete.TabIndex = 18;
+            btnDelete.Text = "Delete a note";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // linkAirplaneTypes
             // 
@@ -369,6 +393,49 @@
             linkAdministrators.Text = "Administrators";
             linkAdministrators.Click += link_Click;
             // 
+            // labelTableName
+            // 
+            labelTableName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            labelTableName.AutoSize = true;
+            labelTableName.Font = new Font("Britannic Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            labelTableName.ForeColor = Color.FromArgb(192, 0, 192);
+            labelTableName.Location = new Point(190, 0);
+            labelTableName.Name = "labelTableName";
+            labelTableName.Size = new Size(1026, 38);
+            labelTableName.TabIndex = 2;
+            labelTableName.Text = "label1";
+            labelTableName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(btnSearch);
+            groupBox2.Controls.Add(fieldSearch);
+            groupBox2.Location = new Point(190, 529);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(367, 52);
+            groupBox2.TabIndex = 3;
+            groupBox2.TabStop = false;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = Color.FromArgb(192, 0, 192);
+            btnSearch.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(232, 11);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(117, 37);
+            btnSearch.TabIndex = 1;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // fieldSearch
+            // 
+            fieldSearch.Location = new Point(6, 16);
+            fieldSearch.Name = "fieldSearch";
+            fieldSearch.Size = new Size(220, 27);
+            fieldSearch.TabIndex = 0;
+            // 
             // Aeroport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -383,8 +450,11 @@
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -411,5 +481,10 @@
         private ComboBox comboBox;
         private Button btnAdd;
         private LinkLabel linkAirplaneTypes;
+        private Button btnDelete;
+        private Label labelTableName;
+        private GroupBox groupBox2;
+        private Button btnSearch;
+        private TextBox fieldSearch;
     }
 }

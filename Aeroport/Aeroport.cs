@@ -1,9 +1,12 @@
 using Aeroport.AddForms;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aeroport
 {
     public partial class Aeroport : Form
     {
+        private string currentTable = "Airplanes";
+        public event Action DataUpdated;
         public Aeroport()
         {
             InitializeComponent();
@@ -12,6 +15,7 @@ namespace Aeroport
             {
                 var data = context.Airplanes.ToList();
                 dataGridView1.DataSource = data;
+                labelTableName.Text = "Airplanes";
             }
         }
 
@@ -45,18 +49,19 @@ namespace Aeroport
         private void link_Click(object sender, EventArgs e)
         {
             var linkLabel = (LinkLabel)sender;
-            var tableName = linkLabel.Text;
+            currentTable = linkLabel.Text;
+            labelTableName.Text = currentTable;
 
             using (var context = new AeroportContext())
             {
-                if (tableMap.TryGetValue(tableName, out var getTableData))
+                if (tableMap.TryGetValue(currentTable, out var getTableData))
                 {
                     var table = getTableData(context);
                     dataGridView1.DataSource = table;
                 }
                 else
                 {
-                    MessageBox.Show("Таблица " + tableName + " не найдена.");
+                    MessageBox.Show("Таблица " + currentTable + " не найдена.");
                 }
             }
         }
@@ -111,52 +116,52 @@ namespace Aeroport
             switch (selectedTable)
             {
                 case "Administrators":
-                    new AddAdministrator().ShowDialog();
+                    new AddAdministrator(this).ShowDialog();
                     break;
                 case "Airplanes":
-                    new AddAirplane().ShowDialog();
+                    new AddAirplane(this).ShowDialog();
                     break;
                 case "AirplaneTypes":
-                    new AddAirplaneType().ShowDialog();
+                    new AddAirplaneType(this).ShowDialog();
                     break;
                 case "Bosses":
-                    new AddBoss().ShowDialog();
+                    new AddBoss(this).ShowDialog();
                     break;
                 case "Brigades":
-                    new AddBrigade().ShowDialog();
+                    new AddBrigade(this).ShowDialog();
                     break;
                 case "CancelledFlights":
-                    new AddCancelledFlight().ShowDialog();
+                    new AddCancelledFlight(this).ShowDialog();
                     break;
                 case "Cashiers":
-                    new AddCashier().ShowDialog();
+                    new AddCashier(this).ShowDialog();
                     break;
                 case "Dispatchers":
-                    new AddDispatcher().ShowDialog();
+                    new AddDispatcher(this).ShowDialog();
                     break;
                 case "Employees":
-                    new AddEmployee().ShowDialog();
+                    new AddEmployee(this).ShowDialog();
                     break;
                 case "Flights":
-                    new AddFlight().ShowDialog();
+                    new AddFlight(this).ShowDialog();
                     break;
                 case "Passengers":
-                    new AddPassenger().ShowDialog();
+                    new AddPassenger(this).ShowDialog();
                     break;
                 case "Pilots":
-                    new AddPilot().ShowDialog();
+                    new AddPilot(this).ShowDialog();
                     break;
                 case "Securities":
-                    new AddSecurity().ShowDialog();
+                    new AddSecurity(this).ShowDialog();
                     break;
                 case "Stewardesses":
-                    new AddStewardess().ShowDialog();
+                    new AddStewardess(this).ShowDialog();
                     break;
                 case "Technicians":
-                    new AddTechnician().ShowDialog();
+                    new AddTechnician(this).ShowDialog();
                     break;
                 case "Tickets":
-                    new AddTicket().ShowDialog();
+                    new AddTicket(this).ShowDialog();
                     break;
                 default:
                     MessageBox.Show("Необходимо выбрать таблицу");
@@ -177,6 +182,118 @@ namespace Aeroport
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                int rowID = int.Parse(dataGridView1[0, selectedIndex].Value.ToString());
+
+                using (var context = new AeroportContext())
+                {
+                    switch (currentTable)
+                    {
+                        case "Administrators":
+                            Logic.DeleteEntity<Administrator>(rowID);
+                            break;
+                        case "Airplanes":
+                            Logic.DeleteEntity<Airplane>(rowID);
+                            break;
+                        case "AirplaneTypes":
+                            Logic.DeleteEntity<AirplaneType>(rowID);
+                            break;
+                        case "Bosses":
+                            Logic.DeleteEntity<Boss>(rowID);
+                            break;
+                        case "Brigades":
+                            Logic.DeleteEntity<Brigade>(rowID);
+                            break;
+                        case "CancelledFlights":
+                            Logic.DeleteEntity<CanceledFlight>(rowID);
+                            break;
+                        case "Cashiers":
+                            Logic.DeleteEntity<Cashier>(rowID);
+                            break;
+                        case "Dispatchers":
+                            Logic.DeleteEntity<Dispatcher>(rowID);
+                            break;
+                        case "Employees":
+                            Logic.DeleteEntity<Employee>(rowID);
+                            break;
+                        case "Flights":
+                            Logic.DeleteEntity<Flight>(rowID);
+                            break;
+                        case "Passengers":
+                            Logic.DeleteEntity<Passenger>(rowID);
+                            break;
+                        case "Pilots":
+                            Logic.DeleteEntity<Pilot>(rowID);
+                            break;
+                        case "Securities":
+                            Logic.DeleteEntity<Security>(rowID);
+                            break;
+                        case "Stewardesses":
+                            Logic.DeleteEntity<Stewardess>(rowID);
+                            break;
+                        case "Technicians":
+                            Logic.DeleteEntity<Technician>(rowID);
+                            break;
+                        case "Tickets":
+                            Logic.DeleteEntity<Ticket>(rowID);
+                            break;
+                        default:
+                            MessageBox.Show("Таблица " + currentTable + " не найдена.");
+                            break;
+                    }
+                }
+                using (var context = new AeroportContext())
+                {
+                    if (tableMap.TryGetValue(currentTable, out var getTableData))
+                    {
+                        var table = getTableData(context);
+                        dataGridView1.DataSource = table;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите строку для удаления.");
+            }
+        }
+
+        public void RefreshData()
+        {
+            using (var context = new AeroportContext())
+            {
+                if (tableMap.TryGetValue(currentTable, out var getTableData))
+                {
+                    var table = getTableData(context);
+                    dataGridView1.DataSource = table;
+                }
+                else
+                {
+                    MessageBox.Show("Таблица " + currentTable + " не найдена.");
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchWord = fieldSearch.Text;
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && cell.Value.ToString().Contains(searchWord))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

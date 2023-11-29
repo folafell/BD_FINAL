@@ -12,9 +12,11 @@ namespace Aeroport
 {
     public partial class AddAdministrator : Form
     {
-        public AddAdministrator()
+        private Aeroport mainForm;
+        public AddAdministrator(Aeroport mainform)
         {
             InitializeComponent();
+            this.mainForm = mainform;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -30,6 +32,7 @@ namespace Aeroport
             administrator.Password = textBoxPassword.Text;
             Logic.AddEntity(administrator);
             this.Close();
+            mainForm.RefreshData();
         }
     }
 }
