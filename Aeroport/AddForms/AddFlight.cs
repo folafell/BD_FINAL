@@ -64,10 +64,7 @@ namespace Aeroport.AddForms
             TimeSpan time = new TimeSpan(hours, minutes, 0);
 
             flight.Duration = time;
-            string selectedAirplaneType = fieldAirplaneTypeId.SelectedItem.ToString();
-            int airplaneTypeId = airplaneTypesDict.FirstOrDefault(x => x.Value == selectedAirplaneType).Key;
-            flight.FlightAirplaneTypeId = airplaneTypeId + 1;
-
+            flight.FlightAirplaneTypeId = (int)fieldAirplaneTypeId.SelectedValue;
             flight.FlightBrigadeId = (int)fieldBrigadeId.SelectedValue;
             Logic.AddEntity(flight);
             this.Close();

@@ -46,7 +46,15 @@ namespace Aeroport
             }
         }
 
-
+        public static bool isEmployeesNotInRoleEmpty() 
+        {
+            var employeesFree = Logic.GetEmployeesNotInRole();
+            if (employeesFree.Count == 0)
+            {
+                return true;
+            }
+            else return false;
+        }
 
     }
 }

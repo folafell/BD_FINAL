@@ -34,5 +34,22 @@ namespace Aeroport
             this.Close();
             mainForm.RefreshData();
         }
+
+        private void textBoxLogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void labelPassword_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void labelLogin_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -39,23 +39,19 @@ namespace Aeroport
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(fieldBrigadeAirplane.SelectedItem?.ToString()) ||
-                string.IsNullOrEmpty(fieldBrigadeBoss.SelectedItem?.ToString()))
+            Brigade newBrigade = new Brigade();
+
+            newBrigade.BrigadeBossId = (int)fieldBrigadeBoss.SelectedValue;
+            newBrigade.BrigadeAirplaneId = (int)fieldBrigadeAirplane.SelectedValue;
+
+            using (var context = new AeroportContext())
             {
-                MessageBox.Show("Необходимо заполнить все поля");
-                return;
+                context.Brigades.Add(newBrigade);
+                context.SaveChanges();
             }
-            Brigade brigade = new Brigade();
-            string selectedBrigadeBoss = fieldBrigadeBoss.SelectedItem.ToString();
-
-            int BrigadeBossID = brigadeBossDict.FirstOrDefault(x => x.Value == selectedBrigadeBoss).Key;
-
-            brigade.BrigadeBossId = BrigadeBossID + 1;
-
-            brigade.BrigadeAirplaneId = (int)fieldBrigadeAirplane.SelectedValue;
-            Logic.AddEntity(brigade);
-            this.Close();
             mainForm.RefreshData();
+            this.Close();
         }
+
     }
 }

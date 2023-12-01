@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataGridView1 = new DataGridView();
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnColor = new Button();
             groupBox1 = new GroupBox();
+            btnEdit = new Button();
             btnDelete = new Button();
             linkAirplaneTypes = new LinkLabel();
             btnAdd = new Button();
-            comboBox = new ComboBox();
             linkTickets = new LinkLabel();
             linkTechnicians = new LinkLabel();
             linkStewardesses = new LinkLabel();
@@ -54,6 +55,7 @@
             linkAdministrators = new LinkLabel();
             labelTableName = new Label();
             groupBox2 = new GroupBox();
+            btnReset = new Button();
             btnSearch = new Button();
             fieldSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -66,23 +68,23 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(190, 41);
             dataGridView1.Name = "dataGridView1";
@@ -99,6 +101,7 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.3404427F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 84.65955F));
+            tableLayoutPanel1.Controls.Add(btnColor, 0, 2);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 1);
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
             tableLayoutPanel1.Controls.Add(labelTableName, 1, 0);
@@ -121,12 +124,26 @@
             tableLayoutPanel1.TabIndex = 23;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
+            // btnColor
+            // 
+            btnColor.BackColor = Color.White;
+            btnColor.Dock = DockStyle.Fill;
+            btnColor.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnColor.ForeColor = Color.Black;
+            btnColor.Location = new Point(3, 529);
+            btnColor.Name = "btnColor";
+            btnColor.Size = new Size(181, 52);
+            btnColor.TabIndex = 3;
+            btnColor.Text = "Color";
+            btnColor.UseVisualStyleBackColor = false;
+            btnColor.Click += btnColor_Click;
+            // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnEdit);
             groupBox1.Controls.Add(btnDelete);
             groupBox1.Controls.Add(linkAirplaneTypes);
             groupBox1.Controls.Add(btnAdd);
-            groupBox1.Controls.Add(comboBox);
             groupBox1.Controls.Add(linkTickets);
             groupBox1.Controls.Add(linkTechnicians);
             groupBox1.Controls.Add(linkStewardesses);
@@ -149,12 +166,25 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             // 
+            // btnEdit
+            // 
+            btnEdit.BackColor = Color.FromArgb(192, 0, 192);
+            btnEdit.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEdit.ForeColor = SystemColors.ButtonFace;
+            btnEdit.Location = new Point(6, 444);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(175, 39);
+            btnEdit.TabIndex = 19;
+            btnEdit.Text = "Edit a note";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click_1;
+            // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.FromArgb(192, 0, 192);
             btnDelete.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Location = new Point(6, 441);
+            btnDelete.Location = new Point(6, 409);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(175, 39);
             btnDelete.TabIndex = 18;
@@ -180,23 +210,13 @@
             btnAdd.BackColor = Color.FromArgb(192, 0, 192);
             btnAdd.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnAdd.ForeColor = SystemColors.ButtonFace;
-            btnAdd.Location = new Point(6, 398);
+            btnAdd.Location = new Point(6, 373);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(175, 39);
             btnAdd.TabIndex = 16;
             btnAdd.Text = "Add a note";
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += addButton_Click;
-            // 
-            // comboBox
-            // 
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox.FormattingEnabled = true;
-            comboBox.Items.AddRange(new object[] { "Administrators", "Airplanes", "AirplaneTypes", "Bosses", "Brigades", "CancelledFlights", "Cashiers", "Dispatchers", "Employees", "Flights", "Passengers", "Pilots", "Securities", "Stewardesses", "Technicians", "Tickets" });
-            comboBox.Location = new Point(6, 364);
-            comboBox.Name = "comboBox";
-            comboBox.Size = new Size(175, 28);
-            comboBox.TabIndex = 2;
             // 
             // linkTickets
             // 
@@ -408,13 +428,27 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnReset);
             groupBox2.Controls.Add(btnSearch);
             groupBox2.Controls.Add(fieldSearch);
             groupBox2.Location = new Point(190, 529);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(367, 52);
+            groupBox2.Size = new Size(490, 52);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
+            // 
+            // btnReset
+            // 
+            btnReset.BackColor = Color.FromArgb(192, 0, 192);
+            btnReset.Font = new Font("Cooper Black", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReset.ForeColor = Color.White;
+            btnReset.Location = new Point(355, 11);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(117, 37);
+            btnReset.TabIndex = 2;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // btnSearch
             // 
@@ -478,7 +512,6 @@
         private LinkLabel linkBosses;
         private LinkLabel linkAirplanes;
         private LinkLabel linkAdministrators;
-        private ComboBox comboBox;
         private Button btnAdd;
         private LinkLabel linkAirplaneTypes;
         private Button btnDelete;
@@ -486,5 +519,8 @@
         private GroupBox groupBox2;
         private Button btnSearch;
         private TextBox fieldSearch;
+        private Button btnEdit;
+        private Button btnReset;
+        private Button btnColor;
     }
 }

@@ -4,10 +4,10 @@
     <Compile Update="AddForms\AddAdministrator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AddForms\AddAirplane.cs">
+    <Compile Update="AddForms\AddAirplaneType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AddForms\AddAirplaneType.cs">
+    <Compile Update="AddForms\AddAirplane.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="AddForms\AddBoss.cs">
@@ -50,6 +50,54 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Aeroport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditAirplane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditAirplaneType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditBoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditBrigade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditCahier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditCancelledFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditDispatcher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditPassenger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditPilot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditStewardess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditTechnician.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditForms\EditTicket.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

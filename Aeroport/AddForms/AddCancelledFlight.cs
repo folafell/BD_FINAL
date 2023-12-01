@@ -13,6 +13,7 @@ namespace Aeroport
     public partial class AddCancelledFlight : Form
     {
         private Aeroport mainForm;
+
         public AddCancelledFlight(Aeroport mainForm)
         {
             InitializeComponent();

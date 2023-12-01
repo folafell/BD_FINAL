@@ -44,7 +44,7 @@ namespace Aeroport
             Employee employee = new Employee();
             employee.EmployeeBrigadeId = (int)fieldEmployeeBrigadeId.SelectedValue;
             employee.Lastname = fieldLastname.Text;
-            employee.Age = (int)fieldEmployeeBrigadeId.SelectedValue;
+            employee.Age = (int)fieldAge.Value;
             employee.Gender = fieldGender.Text;
             employee.Experience = fieldExperience.Value.ToString();
             employee.Children = (int)fieldChildren.Value;

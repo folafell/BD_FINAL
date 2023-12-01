@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Aeroport
+namespace Aeroport.AddForms
 {
-    public partial class AddAirplane : Form
+
+    public partial class AddAirplane_fixed : Form
     {
         private Aeroport mainForm;
         Dictionary<int, string> airplaneTypesDict = new Dictionary<int, string>();
 
-        public AddAirplane(Aeroport mainForm)
+        public AddAirplane_fixed(Aeroport mainForm)
         {
             InitializeComponent();
             using (var context = new AeroportContext())
@@ -53,10 +53,7 @@ namespace Aeroport
                 return;
             }
             Airplane airplane = new Airplane();
-            string selectedAirplaneType = fieldToAirplaneType.SelectedItem.ToString();
-            int airplaneTypeId = airplaneTypesDict.FirstOrDefault(x => x.Value == selectedAirplaneType).Key;
-            airplane.ToAirplaneTypeId = airplaneTypeId + 1;
-
+            airplane.ToAirplaneTypeId = (int)fieldToAirplaneType.SelectedValue;
             airplane.LastRepair = fieldLastRepair.Value;
             airplane.CountOfRepairs = (int)fieldCountOfRepairs.Value;
             airplane.TechnicalInspection = fieldTechnicalInspectation.Value;

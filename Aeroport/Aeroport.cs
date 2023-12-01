@@ -1,4 +1,5 @@
 using Aeroport.AddForms;
+using Aeroport.EditForms;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aeroport
@@ -111,15 +112,14 @@ namespace Aeroport
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            string selectedTable = comboBox.SelectedItem.ToString();
 
-            switch (selectedTable)
+            switch (currentTable)
             {
                 case "Administrators":
                     new AddAdministrator(this).ShowDialog();
                     break;
                 case "Airplanes":
-                    new AddAirplane(this).ShowDialog();
+                    new AddAirplane_fixed(this).ShowDialog();
                     break;
                 case "AirplaneTypes":
                     new AddAirplaneType(this).ShowDialog();
@@ -134,10 +134,18 @@ namespace Aeroport
                     new AddCancelledFlight(this).ShowDialog();
                     break;
                 case "Cashiers":
-                    new AddCashier(this).ShowDialog();
+                    if (Logic.isEmployeesNotInRoleEmpty())
+                    {
+                        MessageBox.Show("Все сотрудники уже назначены на роли. Сначала добавьте нового сотрудника.");
+                    }
+                    else new AddCashier(this).ShowDialog();
                     break;
                 case "Dispatchers":
-                    new AddDispatcher(this).ShowDialog();
+                    if (Logic.isEmployeesNotInRoleEmpty())
+                    {
+                        MessageBox.Show("Все сотрудники уже назначены на роли. Сначала добавьте нового сотрудника.");
+                    }
+                    else new AddDispatcher(this).ShowDialog();
                     break;
                 case "Employees":
                     new AddEmployee(this).ShowDialog();
@@ -149,16 +157,32 @@ namespace Aeroport
                     new AddPassenger(this).ShowDialog();
                     break;
                 case "Pilots":
-                    new AddPilot(this).ShowDialog();
+                    if (Logic.isEmployeesNotInRoleEmpty())
+                    {
+                        MessageBox.Show("Все сотрудники уже назначены на роли. Сначала добавьте нового сотрудника.");
+                    }
+                    else new AddPilot(this).ShowDialog();
                     break;
                 case "Securities":
-                    new AddSecurity(this).ShowDialog();
+                    if (Logic.isEmployeesNotInRoleEmpty())
+                    {
+                        MessageBox.Show("Все сотрудники уже назначены на роли. Сначала добавьте нового сотрудника.");
+                    }
+                    else new AddSecurity(this).ShowDialog();
                     break;
                 case "Stewardesses":
-                    new AddStewardess(this).ShowDialog();
+                    if (Logic.isEmployeesNotInRoleEmpty())
+                    {
+                        MessageBox.Show("Все сотрудники уже назначены на роли. Сначала добавьте нового сотрудника.");
+                    }
+                    else new AddStewardess(this).ShowDialog();
                     break;
                 case "Technicians":
-                    new AddTechnician(this).ShowDialog();
+                    if (Logic.isEmployeesNotInRoleEmpty())
+                    {
+                        MessageBox.Show("Все сотрудники уже назначены на роли. Сначала добавьте нового сотрудника.");
+                    }
+                    else new AddTechnician(this).ShowDialog();
                     break;
                 case "Tickets":
                     new AddTicket(this).ShowDialog();
@@ -294,6 +318,88 @@ namespace Aeroport
                     }
                 }
             }
+        }
+
+        private void btnEdit_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectedIndex = dataGridView1.SelectedRows[0].Index;
+                int rowID = int.Parse(dataGridView1[0, selectedIndex].Value.ToString());
+
+                switch (currentTable)
+                {
+                    case "Administrators":
+                        new EditAdministrator(this, rowID).ShowDialog();
+                        break;
+                    case "Airplanes":
+                        new EditAirplane(this, rowID).ShowDialog();
+                        break;
+                    case "AirplaneTypes":
+                        new EditAirplaneType(this, rowID).ShowDialog();
+                        break;
+                    case "Bosses":
+                        new EditBoss(this, rowID).ShowDialog();
+                        break;
+                    case "Brigades":
+                        new EditBrigade(this, rowID).ShowDialog();
+                        break;
+                    case "CancelledFlights":
+                        new EditCancelledFlight(this, rowID).ShowDialog();
+                        break;
+                    case "Cashiers":
+                        new EditCahier(this, rowID).ShowDialog();
+                        break;
+                    case "Dispatchers":
+                        new EditDispatcher(this, rowID).ShowDialog();
+                        break;
+                    case "Employees":
+                        new EditEmployee(this, rowID).ShowDialog();
+                        break;
+                    case "Flights":
+                        new EditFlight(this, rowID).ShowDialog();
+                        break;
+                    case "Passengers":
+                        new EditPassenger(this, rowID).ShowDialog();
+                        break;
+                    case "Pilots":
+                        new EditPilot(this, rowID).ShowDialog();
+                        break;
+                    case "Securities":
+                        new EditSecurity(this, rowID).ShowDialog();
+                        break;
+                    case "Stewardesses":
+                        new EditStewardess(this, rowID).ShowDialog();
+                        break;
+                    case "Technicians":
+                        new EditTechnician(this, rowID).ShowDialog();
+                        break;
+                    case "Tickets":
+                        new EditTicket(this, rowID).ShowDialog();
+                        break;
+                    default:
+                        MessageBox.Show("Необходимо выбрать таблицу");
+                        break;
+                }
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.DefaultCellStyle.BackColor = Color.White;
+            }
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.BackColor = colorDialog.Color;
+            }
+
         }
     }
 }

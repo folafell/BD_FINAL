@@ -194,7 +194,6 @@
             // 
             fieldHours.Location = new Point(16, 417);
             fieldHours.Maximum = new decimal(new int[] { 23, 0, 0, 0 });
-            fieldHours.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             fieldHours.Name = "fieldHours";
             fieldHours.Size = new Size(127, 27);
             fieldHours.TabIndex = 16;
@@ -204,7 +203,6 @@
             // 
             fieldMinutes.Location = new Point(149, 417);
             fieldMinutes.Maximum = new decimal(new int[] { 59, 0, 0, 0 });
-            fieldMinutes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             fieldMinutes.Name = "fieldMinutes";
             fieldMinutes.Size = new Size(139, 27);
             fieldMinutes.TabIndex = 17;

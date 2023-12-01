@@ -50,6 +50,7 @@
             label1.Size = new Size(73, 20);
             label1.TabIndex = 0;
             label1.Text = "Firstname";
+            label1.Click += label1_Click;
             // 
             // fieldFirstname
             // 
@@ -57,6 +58,7 @@
             fieldFirstname.Name = "fieldFirstname";
             fieldFirstname.Size = new Size(233, 27);
             fieldFirstname.TabIndex = 1;
+            fieldFirstname.TextChanged += fieldFirstname_TextChanged;
             // 
             // label2
             // 
@@ -66,6 +68,7 @@
             label2.Size = new Size(72, 20);
             label2.TabIndex = 2;
             label2.Text = "Lastname";
+            label2.Click += label2_Click;
             // 
             // fieldLastname
             // 
@@ -73,6 +76,7 @@
             fieldLastname.Name = "fieldLastname";
             fieldLastname.Size = new Size(233, 27);
             fieldLastname.TabIndex = 3;
+            fieldLastname.TextChanged += fieldLastname_TextChanged;
             // 
             // label3
             // 
@@ -82,6 +86,7 @@
             label3.Size = new Size(82, 20);
             label3.TabIndex = 4;
             label3.Text = "Patronymic";
+            label3.Click += label3_Click;
             // 
             // fieldPatronymic
             // 
@@ -89,6 +94,7 @@
             fieldPatronymic.Name = "fieldPatronymic";
             fieldPatronymic.Size = new Size(233, 27);
             fieldPatronymic.TabIndex = 5;
+            fieldPatronymic.TextChanged += fieldPatronymic_TextChanged;
             // 
             // label4
             // 
@@ -98,6 +104,7 @@
             label4.Size = new Size(36, 20);
             label4.TabIndex = 6;
             label4.Text = "Age";
+            label4.Click += label4_Click;
             // 
             // fieldAge
             // 
@@ -108,6 +115,7 @@
             fieldAge.Size = new Size(233, 27);
             fieldAge.TabIndex = 7;
             fieldAge.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            fieldAge.ValueChanged += fieldAge_ValueChanged;
             // 
             // label5
             // 
@@ -117,6 +125,7 @@
             label5.Size = new Size(57, 20);
             label5.TabIndex = 8;
             label5.Text = "Gender";
+            label5.Click += label5_Click;
             // 
             // fieldGender
             // 
@@ -127,6 +136,7 @@
             fieldGender.Name = "fieldGender";
             fieldGender.Size = new Size(233, 28);
             fieldGender.TabIndex = 9;
+            fieldGender.SelectedIndexChanged += fieldGender_SelectedIndexChanged;
             // 
             // btnAdd
             // 

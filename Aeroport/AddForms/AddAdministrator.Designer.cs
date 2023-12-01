@@ -43,6 +43,7 @@
             labelLogin.Size = new Size(46, 20);
             labelLogin.TabIndex = 0;
             labelLogin.Text = "Login";
+            labelLogin.Click += labelLogin_Click;
             // 
             // labelPassword
             // 
@@ -52,6 +53,7 @@
             labelPassword.Size = new Size(70, 20);
             labelPassword.TabIndex = 1;
             labelPassword.Text = "Password";
+            labelPassword.Click += labelPassword_Click;
             // 
             // textBoxPassword
             // 
@@ -59,6 +61,7 @@
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(209, 27);
             textBoxPassword.TabIndex = 2;
+            textBoxPassword.TextChanged += textBoxPassword_TextChanged;
             // 
             // textBoxLogin
             // 
@@ -66,6 +69,7 @@
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.Size = new Size(209, 27);
             textBoxLogin.TabIndex = 3;
+            textBoxLogin.TextChanged += textBoxLogin_TextChanged;
             // 
             // btnAdd
             // 
