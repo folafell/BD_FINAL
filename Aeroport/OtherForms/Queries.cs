@@ -59,7 +59,7 @@ namespace Aeroport.OtherForms
                     {
                         Description = "3. Вывести всех сотрудников мужского пола, с опытом от 24 месяцев, " +
                         "имеющих хотя бы одного ребенка и зарплату выше 1000.",
-                        SqlQuery = "SELECT * FROM Employee\r\nWHERE EmployeeBrigadeID = 1 AND Experience >= 24 " +
+                        SqlQuery = "SELECT * FROM Employee\r\nWHERE Experience >= 24 " +
                                    "AND Gender = 'М' AND Children > 0 AND Salary > 1000\r\n" +
                                    "ORDER BY Employee.Age DESC"
                     }
@@ -209,7 +209,7 @@ namespace Aeroport.OtherForms
                     "Запрос №16",
                     new QueryInfo
                     {
-                        Description = "16. Вывести международные рейсы, с датой 2023-05-01.",
+                        Description = "16. Вывести пассажиров на международные рейсы, с датой 2023-05-01.",
                         SqlQuery = "SELECT Passenger.Lastname AS 'Фамилия', Passenger.Firstname AS 'Имя', Passenger.Patronymic " +
                                    "AS 'Отчество', Passenger.Age AS 'Возраст', Passenger.Gender AS 'Пол', Ticket.DateOf AS 'Дата'\r\nFROM Passenger\r\n" +
                                    "JOIN Ticket ON Ticket.TicketPassengerID = Passenger.PassengerID\r\nJOIN Flight ON Flight.FlightID = TicketFlightID\r\n" +

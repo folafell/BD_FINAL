@@ -36,7 +36,7 @@ namespace Aeroport
             boss.Salary = (int)fieldSalary.Value;
             Logic.AddEntity(boss);
             this.Close();
-            mainForm.Show();
+            mainForm.RefreshData();
         }
     }
 }

@@ -34,6 +34,7 @@
             label2 = new Label();
             button1 = new Button();
             linkLabelNewUser = new LinkLabel();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -97,12 +98,24 @@
             linkLabelNewUser.Text = "new user?";
             linkLabelNewUser.LinkClicked += linkLabelNewUser_LinkClicked;
             // 
+            // button2
+            // 
+            button2.Location = new Point(119, 10);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 6;
+            button2.Text = "Hack";
+            button2.UseVisualStyleBackColor = true;
+            button2.Visible = false;
+            button2.Click += button2_Click;
+            // 
             // Authorization
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Thistle;
             ClientSize = new Size(333, 360);
+            Controls.Add(button2);
             Controls.Add(linkLabelNewUser);
             Controls.Add(button1);
             Controls.Add(textBoxPassword);
@@ -127,5 +140,6 @@
         private Label label2;
         private Button button1;
         private LinkLabel linkLabelNewUser;
+        private Button button2;
     }
 }

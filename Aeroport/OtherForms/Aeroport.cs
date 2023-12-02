@@ -10,6 +10,7 @@ namespace Aeroport
     {
         private string currentTable = "Airplanes";
         public event Action DataUpdated;
+
         public Aeroport()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace Aeroport
                 var data = context.Airplanes.ToList();
                 dataGridView1.DataSource = data;
                 labelTableName.Text = "Airplanes";
+                hideIfNotAdmin();
             }
         }
 
@@ -71,6 +73,7 @@ namespace Aeroport
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView1.Columns[0].Visible = false;
             List<string> columnsToHide = new List<string>
                 {
                 "Brigades", "Airplanes", "ToAirplaneType", "Schedules",
@@ -407,6 +410,28 @@ namespace Aeroport
         private void btnQueries_Click(object sender, EventArgs e)
         {
             new Queries().ShowDialog();
+        }
+
+        private void hideIfNotAdmin() 
+        {
+            if (!Authorization.isAdmin)
+            {
+                btnDelete.Visible = false;
+                btnEdit.Visible = false;
+
+                linkAdministrators.Enabled = false;
+                linkBosses.Enabled = false;
+                linkBrigades.Enabled = false;
+                linkCashiers.Enabled = false;
+                linkDispatchers.Enabled = false;
+                linkEmployees.Enabled = false;
+                linkPilots.Enabled = false;
+                linkPassengers.Enabled = false;
+                linkSecurities.Enabled = false;
+                linkStewardesses.Enabled = false;
+                linkTechnicians.Enabled = false;
+                linkAirplaneTypes.Enabled = false;
+            }
         }
     }
 }

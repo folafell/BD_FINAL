@@ -30,6 +30,11 @@ namespace Aeroport
                 var user = context.Users.FirstOrDefault(u => u.UserLogin == textBoxLogin.Text && u.UserPassword == textBoxPassword.Text);
                 if (user != null)
                 {
+                    if (textBoxLogin.Text == "admin" && textBoxPassword.Text == "password")
+                    {
+                        isAdmin = true;
+                    }
+                    else isAdmin = false;
                     var aeroportForm = new Aeroport();
                     aeroportForm.FormClosed += RegistrationForm_FormClosed;
                     this.Hide();
@@ -52,6 +57,17 @@ namespace Aeroport
         private void RegistrationForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Close();
+        }
+
+        public static bool isAdmin;
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isAdmin = true;
+            var aeroportForm = new Aeroport();
+            aeroportForm.FormClosed += RegistrationForm_FormClosed;
+            this.Hide();
+            aeroportForm.Show();
         }
     }
 }
