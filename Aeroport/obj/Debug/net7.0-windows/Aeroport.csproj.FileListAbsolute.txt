@@ -88,3 +88,6 @@ D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.
 D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.0-windows\Aeroport.EditForms.EditTechnician.resources
 D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.0-windows\Aeroport.EditForms.EditStewardess.resources
 D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.0-windows\Aeroport.EditForms.EditTicket.resources
+D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.0-windows\Aeroport.Authorization.resources
+D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.0-windows\Aeroport.Registration.resources
+D:\F\Labs\Лабы 4 курс\1-й сем\БД\Aeroport\Aeroport\obj\Debug\net7.0-windows\Aeroport.OtherForms.Queries.resources

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Aeroport.Tables;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aeroport;
@@ -48,6 +49,8 @@ public partial class AeroportContext : DbContext
     public virtual DbSet<Technician> Technicians { get; set; }
 
     public virtual DbSet<Ticket> Tickets { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -298,7 +301,7 @@ public partial class AeroportContext : DbContext
             entity.ToTable("Stewardess");
 
             entity.Property(e => e.StewardessId).HasColumnName("StewardessID");
-            entity.Property(e => e.ForeignLanguage).HasMaxLength(50);
+            entity.Property(e => e.ForeignLanguage).HasMaxLength(100);
             entity.Property(e => e.StewardessEmployeeId).HasColumnName("StewardessEmployeeID");
 
             entity.HasOne(d => d.StewardessEmployee).WithMany(p => p.Stewardesses)
@@ -342,6 +345,15 @@ public partial class AeroportContext : DbContext
             entity.HasOne(d => d.TicketPassenger).WithMany(p => p.Tickets)
                 .HasForeignKey(d => d.TicketPassengerId)
                 .HasConstraintName("FK__Ticket__TicketPa__5EBF139D");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC7F35D4D1");
+
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.UserLogin).HasMaxLength(50);
+            entity.Property(e => e.UserPassword).HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

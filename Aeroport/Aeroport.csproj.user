@@ -49,7 +49,10 @@
     <Compile Update="AddForms\AddTicket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Aeroport.cs">
+    <Compile Update="OtherForms\Aeroport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OtherForms\Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EditForms\EditAdministrator.cs">
@@ -98,6 +101,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EditForms\EditTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OtherForms\Queries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="OtherForms\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
